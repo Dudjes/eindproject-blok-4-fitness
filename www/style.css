@@ -7,7 +7,9 @@
 
 body {
     background: linear-gradient(135deg, #a3a4a5 0%, #d4dadf 100%);
+    max-width: 1510px;
 }
+
 header a,
 .footer-column a {
     font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
@@ -20,7 +22,7 @@ header {
     height: auto;
     top: 0;
     position: sticky;
-     box-shadow: 0 2px 5px rgb(255, 255, 255);
+    box-shadow: 0 2px 5px rgb(255, 255, 255);
 }
 
 header,
@@ -87,7 +89,8 @@ footer {
     font-size: xx-large;
     color: #333;
 }
-.footer-column a:hover{
+
+.footer-column a:hover {
     color: rgb(131, 130, 130);
 }
 
@@ -112,21 +115,23 @@ footer {
     padding: 2rem 1.5rem;
     margin: 2rem auto;
     border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
     max-width: 480px;
     text-align: center;
 }
 
 /* workout */
-.workout-section{
+.workout-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
-.workout{
+
+.workout {
     background-color: #fff;
-    width: 20%;
+    width: calc(25% - 15px);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -136,18 +141,21 @@ footer {
     margin: 2%;
     border-radius: 12px;
     border: black solid 2px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.8);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
 }
-.image-workout{
+
+.image-workout {
     height: 260px;
     width: 101%;
     border-radius: 12px;
     margin-bottom: 2%;
 }
+
 .workout:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
 }
+
 .workout-text h1 {
     font-size: 1.3rem;
     margin: 0.5rem 0 0.2rem 0;
@@ -164,4 +172,32 @@ footer {
     font-size: 0.98rem;
     color: #333;
     margin-bottom: 0.4rem;
+}
+
+.workout-detail-button {
+    color: black;
+    border-radius: 12px;
+    border: black solid 2px;
+    padding: 3%;
+    width: 94%;
+    background-color: lightgray;
+}
+
+/* filters */
+.filters {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6%;
+    padding: 1%;
+}
+
+.filters a {
+    color: black;
+    border: black solid 2px;
+    border-radius: 12px;
+    padding: 1%;
+    background-color: rgb(240, 239, 239);
 }

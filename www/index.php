@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 
-$sql = "SELECT * FROM workout WHERE workout_id < 4";
+$sql = "SELECT * FROM workout WHERE workout_id < 5";
 $result = mysqli_query($conn, $sql);
 $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -26,18 +26,18 @@ $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <p>Here are some of our most populair workouts:</p>
         </div>
         <div class="workout-section">
-        <?php foreach ($workouts_info as $workout) { ?>
+            <?php foreach ($workouts_info as $workout) { ?>
                 <section class="workout">
-                    <img class="image-workout" src="afbeeldingen/<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"];?>">
+                    <img class="image-workout" src="afbeeldingen/<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
                     <div class="workout-text">
                         <h1> <?php echo $workout["titel"]; ?></h1>
-                        <h2>Duur: <?php echo substr($workout["duur"], 0,5); ?></h2>
+                        <h2>Duur: <?php echo substr($workout["duur"], 0, 5); ?></h2>
                         <p>📝 <?php echo $workout["beschrijving"]; ?></p>
                         <p>📌 Notitie: <?php echo $workout["notitie"]; ?></p>
                     </div>
                 </section>
-        <?php } ?>
-    </div>
+            <?php } ?>
+        </div>
     </main>
     <?php include "footer.php"; ?>
 </body>
