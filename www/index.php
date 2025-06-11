@@ -20,12 +20,25 @@ $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <body>
     <?php include "header.php"; ?>
-    <div class="welkom">
-        <h1>Welcome to our fitness website</h1>
-        <p>Here are some of our most populair workouts:</p>
+    <main>
+        <div class="welkom">
+            <h1>Welcome to our fitness website</h1>
+            <p>Here are some of our most populair workouts:</p>
+        </div>
+        <div class="workout-section">
+        <?php foreach ($workouts_info as $workout) { ?>
+                <section class="workout">
+                    <img class="image-workout" src="afbeeldingen/<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"];?>">
+                    <div class="workout-text">
+                        <h1> <?php echo $workout["titel"]; ?></h1>
+                        <h2>Duur: <?php echo substr($workout["duur"], 0,5); ?></h2>
+                        <p>📝 <?php echo $workout["beschrijving"]; ?></p>
+                        <p>📌 Notitie: <?php echo $workout["notitie"]; ?></p>
+                    </div>
+                </section>
+        <?php } ?>
     </div>
-    <?php foreach ($workouts_info as $workout) {
-    } ?>
+    </main>
     <?php include "footer.php"; ?>
 </body>
 
