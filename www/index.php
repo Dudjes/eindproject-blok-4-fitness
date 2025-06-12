@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 
-$sql = "SELECT * FROM workout WHERE workout_id < 5";
+$sql = "SELECT * FROM workout WHERE workout_id < 4";
 $result = mysqli_query($conn, $sql);
 $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
