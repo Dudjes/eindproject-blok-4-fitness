@@ -5,31 +5,18 @@ $sql = "SELECT * FROM workout";
 $result = mysqli_query($conn, $sql);
 $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-//tijd filter
-if (isset($_GET['tijd'])) {
-    if ($_GET['tijd'] == 'asc') {
-        $sql = "SELECT * FROM workout ORDER BY duur ASC";
-    }
-    if ($_GET['tijd'] == 'desc') {
-        $sql = "SELECT * FROM workout ORDER BY duur DESC";
-    }
-    $result = mysqli_query($conn, $sql);
-    $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-if (isset($_GET['diff'])) {
-    $diff = $_GET['diff'];
-    $niveaus = ['beginner', 'gevorderd', 'expert'];
-    if (in_array($diff, $niveaus)) {
-        $sql = "SELECT * FROM workout WHERE moeilijkheidsgraad = '$diff'";
-        $result = mysqli_query($conn, $sql);
-        $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    }
-}
+$sql = "SELECT gebruiker.*, lid.*, medewerker.* 
+        FROM gebruiker'
+        JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
+        JOIN medewerker ON  gebruiker.gebruikerid = medewerker.gebruikerid";
+$result = mysqli_query($conn, $sql);
+$accounts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        
 
 //searchbar
-if (isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])) {
+if (!empty($_GET['search-workout'])) {
     $zoeken = mysqli_real_escape_string($conn, $_GET['search-workout']);
-    $sql = "SELECT * FROM workout WHERE titel LIKE '%$zoeken%'";
+    $sql = "SELECT * FROM workout WHERE LOWER(titel) LIKE '%$zoeken%'";
     $result = mysqli_query($conn, $sql);
     $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
@@ -48,19 +35,10 @@ if (isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])) {
 <body>
     <?php include "header.php"; ?>
     <main class="main-workouts">
-        <div class="filters">
-            <a href="?sort=">Normaal</a>
-            <a href="?tijd=asc">kort > lang</a>
-            <a href="?tijd=desc">lang > kort</a>
-            <a href="?diff=beginner">beginner</a>
-            <a href="?diff=gevorderd">gevorderd</a>
-            <a href="?diff=expert">expert</a>
-        </div>
         <div class="search ">
-            <label for="search">Zoek voor een workout:</label>
             <form method="get">
                 <input type="search" name="search-workout" id="search">
-                <button type="submit" name="zoekbutton">Search</button>
+                <button type="submit">Search</button>
             </form>
             <div class="logout">
                 <a href="logout.php">Logout</a>
@@ -120,9 +98,13 @@ if (isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])) {
                 </div>
             </details>
             <details class="compact-collapsible">
-                <summary>Leden</summary>
-                <div>
-
+                <summary>Accounts</summary>
+                <div class="accounts">
+                    <?php foreach($accounts_info as $account){ ?>
+                        <div>
+                            
+                        </div>
+                    <?php } ?>    
                 </div>
             </details>
     </main>
