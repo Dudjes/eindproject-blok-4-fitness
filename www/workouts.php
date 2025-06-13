@@ -17,12 +17,20 @@ if (isset($_GET['tijd'])) {
 }
 if (isset($_GET['diff'])) {
     $diff = $_GET['diff'];
-    $allowed = ['beginner', 'gevorderd', 'expert'];
-    if (in_array($diff, $allowed)) {
+    $niveaus = ['beginner', 'gevorderd', 'expert'];
+    if (in_array($diff, $niveaus)) {
         $sql = "SELECT * FROM workout WHERE moeilijkheidsgraad = '$diff'";
         $result = mysqli_query($conn, $sql);
         $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
+}
+
+//searchbar
+if(isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])){
+    $zoeken = mysqli_real_escape_string($conn, $_GET['search-workout']);
+    $sql = "SELECT * FROM workout WHERE titel LIKE '%$zoeken%'";
+    $result = mysqli_query($conn, $sql);
+    $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 ?>
@@ -38,7 +46,7 @@ if (isset($_GET['diff'])) {
 
 <body>
     <?php include "header.php"; ?>
-    <main>
+    <main class="main-workouts">
         <div class="filters">
             <a href="?sort=">Normaal</a>
             <a href="?tijd=asc">kort > lang</a>
@@ -46,6 +54,13 @@ if (isset($_GET['diff'])) {
             <a href="?diff=beginner">beginner</a>
             <a href="?diff=gevorderd">gevorderd</a>
             <a href="?diff=expert">expert</a>
+        </div>
+        <div class="search ">
+            <label for="search">Zoek voor een workout:</label>
+            <form method="get">
+                <input type="search" name="search-workout" id="search">
+                <button type="submit" name="zoekbutton">Search</button>
+            </form>
         </div>
         <div class="workout-section">
             <?php foreach ($workouts_info as $workout) { ?>

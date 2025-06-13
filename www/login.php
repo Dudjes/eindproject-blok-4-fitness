@@ -15,8 +15,8 @@
                 <label for="username" >Wat is uw username?</label>
                 <input type="text" id="username" name="username" required>
 
-                <label for="wachtwoord" >Wat is uw wachtwoord?</label>
-                <input type="text" id="wachtwoord" name="wachtwoord" required>
+                <label for="password" >Wat is uw wachtwoord?</label>
+                <input type="text" id="password" name="password" required>
 
                 <button type="submit">Login</button>
             </form>

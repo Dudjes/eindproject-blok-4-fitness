@@ -144,6 +144,9 @@ footer {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
 }
 
+.workout-text{
+    background-color: white;
+}
 .image-workout {
     height: 260px;
     width: 101%;
@@ -185,7 +188,7 @@ footer {
 
 /* filters */
 .filters {
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(135deg, white 30%, lightgray 70%);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -202,9 +205,62 @@ footer {
     background-color: rgb(240, 239, 239);
 }
 
+/* search bar */
+.search {
+    background: linear-gradient(135deg, white 30%, lightgray 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+}
+
+.search input[type="search"] {
+    background-color: #c4c7ca;
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    width: 400px;
+    max-width: 100%;
+    font-size: 1.1rem;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.search button {
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #0074d9;
+    background: #0074d9;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0.5rem auto 0 auto;
+}
+
+/* logout */
+.logout {
+    background: linear-gradient(135deg, white 20%, lightgray 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    margin: 2% auto;
+    padding: 1%;
+    border-radius: 12px;
+    border: black solid 2px;
+}
+.logout a{
+    color: black;
+}
+
 /* login  */
 
-.login{
+.login {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,10 +268,10 @@ footer {
     margin: 2%;
 }
 
-.login-form{
+.login-form {
     margin: 1%;
     width: 50%;
-    background: linear-gradient(135deg, rgb(236, 233, 233) 25%, rgb(200, 190, 190) 75%) ;
+    background: linear-gradient(135deg, rgb(236, 233, 233) 25%, rgb(200, 190, 190) 75%);
     border-radius: 12px;
     border: black solid 2px;
     display: flex;
@@ -224,26 +280,28 @@ footer {
     flex-direction: column;
     height: 500px;
 }
-.login-form input{
+
+.login-form input {
     width: 80%;
     height: 40px;
     border-radius: 12px;
     text-align: center;
     margin-bottom: 10%;
 }
-.login-form label{
+
+.login-form label {
     font-size: x-large;
     font-weight: 600;
 }
 
-.login-form button{
+.login-form button {
     width: 50%;
     height: 10%;
 }
 
 /* register */
 
-.register{
+.register {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,7 +315,7 @@ footer {
     background: white;
     border-radius: 12px;
     border: 1px solid #d4d1d1;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -300,7 +358,7 @@ footer {
 }
 
 /* overons */
-.overons{
+.overons {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -312,29 +370,136 @@ footer {
     max-width: 900px;
     margin: 3% auto;
     padding: 3%;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.100);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.100);
 }
-.message h3{
+
+.message h3 {
     margin-bottom: 1%;
     font-size: 1.2rem;
     font-weight: 600;
 }
-.message p{
+
+.message p {
     margin: 1rem 0;
     font-size: 1rem;
     color: black;
 }
 
-.message{
+.message {
     max-width: 75%;
     margin: 0 auto;
 }
+
 @media (max-width: 700px) {
     .overons {
         width: 98%;
         padding: 2%;
     }
+
     .message {
         max-width: 98%;
     }
 }
+
+
+/* lid dashboard */
+.lid-info {
+    background: linear-gradient(135deg, white 30%, lightgray 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: 2rem auto;
+    padding: 2%;
+    border-radius: 12px;
+    border: 2px black solid;
+    gap: 2rem; 
+}
+
+.lid-info-block {
+    min-width: 200px;
+    max-width: 430px;
+    margin-bottom: 1rem;
+    background: #f7f7fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 1.5rem 2rem;
+}
+
+.lid-dash-infodb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.lid-dash-infodb h1 {
+    text-align: center;
+    width: 100%;
+    margin: 2rem 0 2rem 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.lid-info-block h2 {
+    color: #222;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.lid-info-block p {
+    color: #222;
+    font-size: 1.05rem;
+    margin: 0.4rem 0;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.lid-info-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+/* medewerker dash */
+
+
+
+
+
+
+/* collapsible */
+.compact-collapsible summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #eee;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.compact-collapsible[open] summary {
+    background: #ddd;
+}
+
+.compact-collapsible div {
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 2px;
+    font-size: 0.95em;
+}
+

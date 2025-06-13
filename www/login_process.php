@@ -1,10 +1,10 @@
 <?php
-if (!isset($_POST['username']) || !isset($_POST['wachtwoord'])) {
+if (!isset($_POST['username']) || !isset($_POST['password'])) {
     header('Location: login.php');
     exit;
 }
 $username = $_POST['username'];
-$wachtwoord = $_POST['wachtwoord'];
+$wachtwoord = $_POST['password'];
 
 require "database.php";
 
@@ -13,9 +13,9 @@ $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
 if (is_array($user)) {
-    if($wachtwoord == $user['wachtwoord']) {
+    if($wachtwoord == $user['password']) {
         session_start();
-        $_SESSION['user_id'] = $user['gebruiker_id'];
+        $_SESSION['user_id'] = $user['gebruikerid'];
         $_SESSION['user_email'] = $user['email'];
         $_SESSION['user_username'] = $user['username'];
         $_SESSION['user_rol'] = $user['rol'];
@@ -23,7 +23,7 @@ if (is_array($user)) {
             header('Location: index.php');
             exit;
         } else if ($user['rol'] == 'lid') {
-            header('Location: lid-dashboard.php');
+            header('Location: lid-dashboard.php?'. $user['gebruikerid']);
             exit;
         } else if ($user['rol'] == 'werknemer') {
             header('Location: werknemer-dashboard.php');
