@@ -28,7 +28,7 @@ $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <div class="workout-section">
             <?php foreach ($workouts_info as $workout) { ?>
                 <section class="workout">
-                    <img class="image-workout" src="afbeeldingen/<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
+                    <img class="image-workout" src="<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
                     <div class="workout-text">
                         <h1> <?php echo $workout["titel"]; ?></h1>
                         <h2>Duur: <?php echo substr($workout["duur"], 0, 5); ?></h2>

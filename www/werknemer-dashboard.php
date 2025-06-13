@@ -5,6 +5,7 @@ $sql = "SELECT * FROM workout";
 $result = mysqli_query($conn, $sql);
 $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+//tijd filter
 if (isset($_GET['tijd'])) {
     if ($_GET['tijd'] == 'asc') {
         $sql = "SELECT * FROM workout ORDER BY duur ASC";
@@ -103,7 +104,7 @@ if (isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])) {
                     <div class="workout-section">
                         <?php foreach ($workouts_info as $workout) { ?>
                             <section class="workout">
-                                <img class="image-workout" src="afbeeldingen/<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
+                                <img class="image-workout" src="<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
                                 <div class="workout-text">
                                     <h1> <?php echo $workout["titel"]; ?></h1>
                                     <h2>Duur: <?php echo substr($workout["duur"], 0, 5); ?></h2>
@@ -120,7 +121,9 @@ if (isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])) {
             </details>
             <details class="compact-collapsible">
                 <summary>Leden</summary>
-                
+                <div>
+
+                </div>
             </details>
     </main>
     <?php include "footer.php"; ?>
