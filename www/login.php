@@ -10,14 +10,10 @@
     <?php include "header.php";?>
     <main>
         <div class="login">
-            <form class="login-form" action="login_process.php" method="post">
-                <div><h1>Login</h1></div>
-                <label for="username" >Wat is uw username?</label>
-                <input type="text" id="username" name="username" required>
-
-                <label for="password" >Wat is uw wachtwoord?</label>
-                <input type="text" id="password" name="password" required>
-
+            <form class="register-form" action="login_process.php" method="post">
+                <h1>Login</h1>
+                <input type="text" name="username" placeholder="Gebruikersnaam" required>
+                <input type="password" name="wachtwoord" placeholder="Wachtwoord" required>
                 <button type="submit">Login</button>
             </form>
         </div>
