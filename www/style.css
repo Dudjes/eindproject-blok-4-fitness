@@ -302,48 +302,7 @@ footer {
     color: black;
 }
 
-/* login  */
-
-.login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 2%;
-}
-
-.login-form {
-    margin: 1%;
-    width: 50%;
-    background: linear-gradient(135deg, rgb(236, 233, 233) 25%, rgb(200, 190, 190) 75%);
-    border-radius: 12px;
-    border: black solid 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 500px;
-}
-
-.login-form input {
-    width: 80%;
-    height: 40px;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 10%;
-}
-
-.login-form label {
-    font-size: x-large;
-    font-weight: 600;
-}
-
-.login-form button {
-    width: 50%;
-    height: 10%;
-}
-
-/* register */
+/* login & register */
 
 .register {
     display: flex;
