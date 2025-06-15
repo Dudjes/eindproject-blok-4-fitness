@@ -6,19 +6,33 @@ $result = mysqli_query($conn, $sql);
 $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 $sql = "SELECT gebruiker.*, lid.*, medewerker.* 
-        FROM gebruiker'
+        FROM gebruiker
         JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
         JOIN medewerker ON  gebruiker.gebruikerid = medewerker.gebruikerid";
 $result = mysqli_query($conn, $sql);
 $accounts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        
+
 
 //searchbar
 if (!empty($_GET['search-workout'])) {
     $zoeken = mysqli_real_escape_string($conn, $_GET['search-workout']);
+
+    //workout
     $sql = "SELECT * FROM workout WHERE LOWER(titel) LIKE '%$zoeken%'";
     $result = mysqli_query($conn, $sql);
     $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+
+    //account
+    $sql = "SELECT gebruiker.*, lid.*, medewerker.* 
+            FROM gebruiker
+            JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
+            JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid
+            WHERE LOWER(gebruiker.firstname) LIKE LOWER('%$zoeken%')
+               OR LOWER(gebruiker.lastname) LIKE LOWER('%$zoeken%')
+               OR LOWER(gebruiker.email) LIKE LOWER('%$zoeken%')";
+    $result = mysqli_query($conn, $sql);
+    $accounts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 ?>
@@ -100,11 +114,30 @@ if (!empty($_GET['search-workout'])) {
             <details class="compact-collapsible">
                 <summary>Accounts</summary>
                 <div class="accounts">
-                    <?php foreach($accounts_info as $account){ ?>
-                        <div>
-                            
+                    <?php foreach ($accounts_info as $account) { ?>
+                        <div class="account">
+                            <h2><?php echo $account['firstname']; ?> <?php echo $account['lastname']; ?></h2>
+                            <div class="account-info">
+                                <ul>
+                                    <li>Email: <?php echo $account['email']; ?></li>
+                                    <li>Username: <?php echo $account["username"]; ?></li>
+                                </ul>
+                                <ul>
+                                    <li>Rol: <?php echo $account['rol']; ?></li>
+                                </ul>
+                                <ul>
+                                    <?php if ($account['rol'] == 'mederwerker') { ?>
+                                        <li>Begonnen werken:<?php echo $account['start_date']; ?></li>
+                                        <li>Titel: <?php echo $account['job_title']; ?></li>
+                                    <?php } ?>
+                                    <?php if ($account['rol'] == 'lid') { ?>
+                                        <li>Laatste login: <?php echo $account['last_login_date']; ?></li>
+                                        <li>id: <?php echo $account['gebruikerid']; ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                         </div>
-                    <?php } ?>    
+                    <?php } ?>
                 </div>
             </details>
     </main>
