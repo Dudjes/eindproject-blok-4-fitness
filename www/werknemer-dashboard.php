@@ -136,6 +136,7 @@ if (!empty($_GET['search-workout'])) {
                                     <?php } ?>
                                 </ul>
                             </div>
+                            <a href="gebruiker_dash.php?id=<?php echo $account['gebruikerid']; ?>" class="detail-button">Detail pagina</a>
                         </div>
                     <?php } ?>
                 </div>

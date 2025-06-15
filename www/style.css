@@ -18,10 +18,11 @@ header a,
 /* header */
 
 header {
+    width: 100%;
+    min-width: 0;
     background-color: rgb(74, 74, 74);
-    height: auto;
-    top: 0;
     position: sticky;
+    top: 0;
     box-shadow: 0 2px 5px rgb(255, 255, 255);
 }
 
@@ -29,9 +30,8 @@ header,
 a,
 li {
     color: white;
-    list-style-type: none;
-    text-decoration: none;
-    font-size: 20px;
+    font-size: 1.3vw;
+    white-space: nowrap;
 }
 
 header a:hover {
@@ -39,19 +39,23 @@ header a:hover {
 }
 
 .headerimg {
-    width: 60px;
-    height: 60px;
+    width: 4vw;
+    height: 4vw;
+    min-width: 32px;
+    min-height: 32px;
     object-fit: contain;
-    margin-right: 1.5rem;
+    margin-right: 2vw;
 }
 
 .nav-all {
     display: flex;
-    gap: 2vw;
+    gap: 4%;
     align-items: center;
     list-style: none;
-    padding: 1%;
+    padding: 1.5% 2%;
     margin: 0;
+    width: 100%;
+    font-size: 1.5vw;
 }
 
 ul {
@@ -61,21 +65,40 @@ ul {
     justify-content: space-evenly;
 }
 
+@media (max-width: 700px) {
+    header{
+        position: unset;
+    }
+    .nav-all {
+        flex-direction: column;
+        gap: 2vw;
+        font-size: 4vw;
+        padding: 3% 2%;
+    }
+    .headerimg {
+        width: 8vw;
+        height: 8vw;
+    }
+    header a, header li {
+        font-size: 4vw; 
+    }
+}
+
 /* footer */
 footer {
     background-color: rgb(74, 73, 73);
-    padding: 3%;
-    align-items: center;
+    padding: 3% 2%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;
+    width: 100%;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 
 .footer-column {
     background-color: lightgrey;
-    height: 8rem;
-    width: 20%;
     border-radius: 12px;
     border: 2px solid white;
     display: flex;
@@ -83,10 +106,15 @@ footer {
     align-items: center;
     justify-content: center;
     text-align: center;
+    width: 25%;
+    min-width: 200px;
+    margin-bottom: 2%;
+    padding: 2% 1%;
+    font-size: 1vw;
 }
 
 .footer-column a {
-    font-size: xx-large;
+    font-size: 1.5vw;
     color: #333;
 }
 
@@ -95,12 +123,26 @@ footer {
 }
 
 .footer-column h3 {
-    margin-bottom: 0.5rem;
+    font-size: 1.5vw;
     color: #222;
-    font-size: 1.2rem;
 }
 
-
+@media (max-width: 900px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 3vw;
+    }
+    .footer-column {
+        width: 80%;
+        font-size: 2.5vw;
+        margin-bottom: 4vw;
+    }
+    .footer-column h3,
+    .footer-column a {
+        font-size: 2.5vw;
+    }
+}
 
 
 
@@ -530,6 +572,19 @@ footer {
     text-align: center;
 }
 
+.detail-button{
+    color: #0074d9;
+    padding: 1%;
+    border-radius: 12px;
+    border: 2px black solid;
+    margin: 1%;
+}
+
+.detail-button:hover{
+    color: blue;
+    background-color: rgb(190, 186, 186);
+}
+
 
 /* collapsible */
 .compact-collapsible summary {
@@ -552,4 +607,44 @@ footer {
     border-radius: 8px;
     margin-top: 2px;
     font-size: 0.95em;
+}
+
+
+
+/* workout detail pagina */
+.workout-detail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px black;
+    padding: 3% 4%;
+    margin: 3% auto;
+    max-width: 1100px;
+    display: flex;
+    gap: 4%;
+}
+.workout-img{
+    width: 100%;
+    height: 50%;
+}
+.workout-img img{
+    width: 60%;
+    height: 80%;
+}
+.workout-detail-text {
+    background: white ;
+    border-radius: 12px;
+    padding: 3% 4%;
+    color: #174a6c;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.workout-detail-text h1 {
+    color: #0074d9;
+    margin-bottom: 1rem;
+    font-size: 2rem;
 }

@@ -20,7 +20,23 @@ $workout_info = mysqli_fetch_assoc($result);
 </head>
 <body>
     <?php include "header.php";?>
-    <h1><?php echo $workout_info['titel'];?></h1>
+    <main>
+        <div class="workout-detail">
+            <div class="workout-img">
+                <img src="<?php echo $workout_info['afbeelding'];?>" alt="afbeelding workout">
+            </div>
+            <div class="workout-detail-text">
+                <div class="workout-detail-text-titel">
+                    <h1><?php echo $workout_info['titel'];?>  voor: <?php echo $workout_info['moeilijkheidsgraad'];?></h1>
+                </div>
+                <div>
+                    <p><?php echo $workout_info['duur'];?></p>
+                    <?php echo $workout_info['notitie'];?>
+                    <?php echo $workout_info['beschrijving'];?>
+                </div>
+            </div>
+        </div>
+    </main>
     <?php include "footer.php";?>
 </body>
 </html>
