@@ -149,7 +149,8 @@ footer {
     }
     .footer-column h3,
     .footer-column a {
-        font-size: 2.5vw;
+        font-size: 3.5vw;
+        font-weight: 500;
     }
 }
 
@@ -236,7 +237,7 @@ footer {
     border-radius: 12px;
     border: black solid 2px;
     padding: 3%;
-    width: 94%;
+    width: 101%;
     background-color: lightgray;
 }
 
@@ -451,6 +452,13 @@ footer {
     flex-direction: column;
     margin: 2%;
 }
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 8%;
+}
 
 .register-form {
     width: 100%;
@@ -464,7 +472,6 @@ footer {
     align-items: stretch;
     padding: 2rem 1.5rem;
     gap: 1rem;
-    margin-bottom: 5%;
 }
 
 .register-form input,
@@ -507,25 +514,20 @@ footer {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, rgb(205, 202, 202) 0%, rgb(228, 217, 217) 100%);
+    background: linear-gradient(135deg, rgb(248, 248, 248) 0%, rgb(255, 255, 255) 100%);
     border-radius: 12px;
     width: 80%;
     max-width: 900px;
     margin: 3% auto;
     padding: 3%;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.100);
+    border: 1px solid black;
+    font-family: Arial, sans-serif;
 }
-
 .message h3 {
     margin-bottom: 1%;
     font-size: 1.2rem;
     font-weight: 600;
-}
-
-.message p {
-    margin: 1rem 0;
-    font-size: 1rem;
-    color: black;
 }
 
 .message {
@@ -533,14 +535,31 @@ footer {
     margin: 0 auto;
 }
 
+.message-text div{
+    background-color: rgb(255, 254, 254);
+    padding: 1rem;
+    margin: 15px 0;
+    text-align: left;
+    border-left: 4px solid rgb(217, 94, 94);
+    border-radius: 12px;
+}
+.message-text div:hover{
+    background-color: rgb(216, 216, 216);
+}
+
 @media (max-width: 700px) {
     .overons {
         width: 98%;
         padding: 2%;
     }
-
     .message {
         max-width: 98%;
+    }
+    .message h3 {
+        font-size: 1.1rem;
+    }
+    .begin-message h1{
+        font-size: 1.8rem;
     }
 }
 
