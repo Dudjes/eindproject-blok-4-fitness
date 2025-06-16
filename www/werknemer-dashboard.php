@@ -1,5 +1,16 @@
 <?php
 require "database.php";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if ($_SESSION['user_rol'] != 'werknemer') {
+    header('Location: bezoeker-dashboard.php');
+    exit;
+}
+
 
 $sql = "SELECT * FROM workout";
 $result = mysqli_query($conn, $sql);

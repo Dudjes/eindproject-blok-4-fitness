@@ -1,5 +1,16 @@
 <?php
 require "database.php";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if ($_SESSION['user_rol'] != 'medewerker') {
+    header('Location: index.php');
+    exit;
+}
+
 $id = $_GET['id'];
 
 //gebruiker info

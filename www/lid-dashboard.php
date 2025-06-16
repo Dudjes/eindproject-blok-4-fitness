@@ -1,5 +1,14 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if ($_SESSION['user_rol'] != 'lid') {
+    header('Location: index.php');
+    exit;
+}
 require "database.php";
 $id = $_SESSION['user_id'] ?? null;
 
