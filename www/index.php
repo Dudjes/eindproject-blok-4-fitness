@@ -29,12 +29,14 @@ $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <?php foreach ($workouts_info as $workout) { ?>
                 <section class="workout">
                     <img class="image-workout" src="<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
-                    <div class="workout-text">
-                        <h1> <?php echo $workout["titel"]; ?></h1>
-                        <h2>Duur: <?php echo substr($workout["duur"], 0, 5); ?></h2>
-                        <p>📝 <?php echo $workout["beschrijving"]; ?></p>
-                        <p>📌 Notitie: <?php echo $workout["notitie"]; ?></p>
-                    </div>
+                        <div class="workout-text">
+                            <h1> <?php echo $workout["titel"]; ?></h1>
+                            <h2>Duur: <?php echo substr($workout["duur"], 0, 5); ?></h2>
+                            <p>📝 <?php echo $workout["beschrijving"]; ?></p>
+                            <p>📌 Notitie: <?php echo $workout["notitie"]; ?></p>
+                            <p>📌 Moeilijkheidsgraad: <?php echo $workout["moeilijkheidsgraad"]; ?></p>
+                        </div>
+                    <a class="workout-detail-button" href="workout_detail.php?workout_id=<?php echo $workout['workout_id']; ?>">Meer info</a>
                 </section>
             <?php } ?>
         </div>

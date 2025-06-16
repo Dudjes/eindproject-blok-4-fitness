@@ -9,7 +9,7 @@
 <body>
     <?php include "header.php";?>
     <main>
-        <div class="login">
+        <div class="register">
             <form class="register-form" action="login_process.php" method="post">
                 <h1>Login</h1>
                 <input type="text" name="username" placeholder="Gebruikersnaam" required>

@@ -47,20 +47,22 @@ if(isset($_GET['zoekbutton']) && !empty($_GET['search-workout'])){
 <body>
     <?php include "header.php"; ?>
     <main class="main-workouts">
-        <div class="filters">
-            <a href="?sort=">Normaal</a>
-            <a href="?tijd=asc">kort > lang</a>
-            <a href="?tijd=desc">lang > kort</a>
-            <a href="?diff=beginner">beginner</a>
-            <a href="?diff=gevorderd">gevorderd</a>
-            <a href="?diff=expert">expert</a>
-        </div>
-        <div class="search ">
-            <label for="search">Zoek voor een workout:</label>
-            <form method="get">
-                <input type="search" name="search-workout" id="search">
-                <button type="submit" name="zoekbutton">Search</button>
-            </form>
+        <div class="filt-search">
+            <div class="filters">
+                <a href="?sort=">Normaal</a>
+                <a href="?tijd=asc">kort > lang</a>
+                <a href="?tijd=desc">lang > kort</a>
+                <a href="?diff=beginner">beginner</a>
+                <a href="?diff=gevorderd">gevorderd</a>
+                <a href="?diff=expert">expert</a>
+            </div>
+            <div class="search ">
+                <label for="search">Zoek voor een workout:</label>
+                <form method="get">
+                    <input type="search" name="search-workout" id="search">
+                    <button type="submit" name="zoekbutton">Search</button>
+                </form>
+            </div>
         </div>
         <div class="workout-section">
             <?php foreach ($workouts_info as $workout) { ?>
