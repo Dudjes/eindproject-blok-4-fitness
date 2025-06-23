@@ -29,6 +29,7 @@ header {
     top: 0;
     box-shadow: 0 2px 5px rgb(255, 255, 255);
     box-sizing: border-box;
+    z-index: 100;
 }
 
 header,
@@ -730,6 +731,59 @@ footer {
 .detail-button:hover{
     color: blue;
     background-color: rgb(190, 186, 186);
+}
+
+.workout-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+.workout-table th, .workout-table td {
+    padding: 0.7rem 0.5rem;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    vertical-align: middle;
+}
+.workout-table th {
+    background: #f7f7fa;
+    color: #0074d9;
+    font-weight: 600;
+}
+@media (max-width: 900px) {
+    .workout-table,
+    .workout-table thead,
+    .workout-table tbody,
+    .workout-table th,
+    .workout-table td,
+    .workout-table tr {
+        display: block;
+        width: 100%;
+    }
+    .workout-table thead {
+        display: none;
+    }
+    .workout-table tr {
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #eee;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 1rem 0.5rem;
+    }
+    .workout-table td {
+        padding: 0.5rem 0.7rem;
+        text-align: left;
+        position: relative;
+        min-height: 32px;
+        font-size: 1rem;
+    }
+    .workout-table a{
+        padding: 1%;
+    }
 }
 
 

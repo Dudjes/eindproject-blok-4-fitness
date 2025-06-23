@@ -104,22 +104,38 @@ if (!empty($_GET['search-workout'])) {
             <details class="compact-collapsible">
                 <summary>Workouts</summary>
                 <div>
-                    <div class="workout-section">
-                        <?php foreach ($workouts_info as $workout) { ?>
-                            <section class="workout">
-                                <img class="image-workout" src="<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>">
-                                <div class="workout-text">
-                                    <h1> <?php echo $workout["titel"]; ?></h1>
-                                    <h2>Duur: <?php echo substr($workout["duur"], 0, 5); ?></h2>
-                                    <p>📝 <?php echo $workout["beschrijving"]; ?></p>
-                                    <p>📌 Notitie: <?php echo $workout["notitie"]; ?></p>
-                                    <p>📌 Toegevoegd op: <?php echo $workout["toegevoegd_op"]; ?></p>
-                                    <p>📌 Moeilijkheidsgraad: <?php echo $workout["moeilijkheidsgraad"]; ?></p>
-                                </div>
-                                <a class="workout-detail-button" href="workout_detail.php?workout_id=<?php echo $workout['workout_id']; ?>">Meer info</a>
-                            </section>
-                        <?php } ?>
-                    </div>
+                    <table class="workout-table">
+                        <thead>
+                            <tr>
+                                <th>Afbeelding</th>
+                                <th>Titel</th>
+                                <th>Duur</th>
+                                <th>Beschrijving</th>
+                                <th>Notitie</th>
+                                <th>Toegevoegd op</th>
+                                <th>Moeilijkheidsgraad</th>
+                                <th>Meer info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($workouts_info as $workout) { ?>
+                                <tr>
+                                    <td>
+                                        <img class="image-workout" src="<?php echo $workout["afbeelding"]; ?>" alt="<?php echo $workout["afbeelding"]; ?>" style="width:60px; height:60px; object-fit:cover; border-radius:8px;">
+                                    </td>
+                                    <td><?php echo $workout["titel"]; ?></td>
+                                    <td><?php echo substr($workout["duur"], 0, 5); ?></td>
+                                    <td><?php echo $workout["beschrijving"]; ?></td>
+                                    <td><?php echo $workout["notitie"]; ?></td>
+                                    <td><?php echo $workout["toegevoegd_op"]; ?></td>
+                                    <td><?php echo $workout["moeilijkheidsgraad"]; ?></td>
+                                    <td>
+                                        <a class="workout-detail-button" href="workout_detail.php?workout_id=<?php echo $workout['workout_id']; ?>">Meer info</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </details>
             <details class="compact-collapsible">
@@ -132,19 +148,6 @@ if (!empty($_GET['search-workout'])) {
                                 <ul>
                                     <li>Email: <?php echo $account['email']; ?></li>
                                     <li>Username: <?php echo $account["username"]; ?></li>
-                                </ul>
-                                <ul>
-                                    <li>Rol: <?php echo $account['rol']; ?></li>
-                                </ul>
-                                <ul>
-                                    <?php if ($account['rol'] == 'mederwerker') { ?>
-                                        <li>Begonnen werken:<?php echo $account['start_date']; ?></li>
-                                        <li>Titel: <?php echo $account['job_title']; ?></li>
-                                    <?php } ?>
-                                    <?php if ($account['rol'] == 'lid') { ?>
-                                        <li>Laatste login: <?php echo $account['last_login_date']; ?></li>
-                                        <li>id: <?php echo $account['gebruikerid']; ?></li>
-                                    <?php } ?>
                                 </ul>
                             </div>
                             <a href="gebruiker_dash.php?id=<?php echo $account['gebruikerid']; ?>" class="detail-button">Detail pagina</a>
