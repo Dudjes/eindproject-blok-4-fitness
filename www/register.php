@@ -36,7 +36,7 @@
                     <option value="lid">Lid</option>
                     <option value="werknemer">Werknemer</option>
                 </select>
-                <input type="password" name="wachtwoord" placeholder="Wachtwoord" required>
+                <input type="password" name="password" placeholder="Wachtwoord" required>
                 <button type="submit">Registreer</button>
             </form>
         </div>

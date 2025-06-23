@@ -13,7 +13,7 @@
             <form class="register-form" action="login_process.php" method="post">
                 <h1>Login</h1>
                 <input type="text" name="username" placeholder="Gebruikersnaam" required>
-                <input type="password" name="wachtwoord" placeholder="Wachtwoord" required>
+                <input type="password" name="password" placeholder="Wachtwoord" required>
                 <button type="submit">Login</button>
             </form>
         </div>

@@ -23,7 +23,7 @@ if (is_array($user)) {
             header('Location: index.php');
             exit;
         } else if ($user['rol'] == 'lid') {
-            header('Location: lid-dashboard.php?'. $user['gebruikerid']);
+            header('Location: lid-dashboard.php?id=' . $user['gebruikerid']);
             exit;
         } else if ($user['rol'] == 'werknemer') {
             header('Location: werknemer-dashboard.php');

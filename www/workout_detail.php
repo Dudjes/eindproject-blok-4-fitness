@@ -30,7 +30,7 @@ $workout_info = mysqli_fetch_assoc($result);
                     <h1><?php echo $workout_info['titel'];?>  voor: <?php echo $workout_info['moeilijkheidsgraad'];?></h1>
                 </div>
                 <div>
-                    <p><?php echo $workout_info['duur'];?></p>
+                    <p><?php echo substr($workout_info["duur"], 0, 5);?></p>
                     <?php echo $workout_info['notitie'];?>
                     <?php echo $workout_info['beschrijving'];?>
                 </div>
