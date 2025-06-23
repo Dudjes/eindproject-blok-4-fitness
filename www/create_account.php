@@ -44,7 +44,7 @@ if(strlen($_POST['mobiel']) > 15){
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vereist = [
         'firstname', 'lastname', 'straat', 'huisnummer', 'username', 'email',
-        'postcode', 'stad', 'land', 'telefoonnummer', 'mobiel', 'rol', 'wachtwoord'
+        'postcode', 'stad', 'land', 'telefoonnummer', 'mobiel', 'rol', 'password'
     ];
     $errors = [];
     foreach ($vereist as $veld) {
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $telefoonnummer = $_POST['telefoonnummer'];
         $mobiel = $_POST['mobiel'];
         $rol = $_POST['rol'];
-        $password = $_POST['wachtwoord'];
+        $password = $_POST['password'];
 
         //inserten naar gebruiker en adres (2 tabbelen)
         $sql1 = "INSERT INTO gebruiker (firstname, lastname, email, password, username, rol)

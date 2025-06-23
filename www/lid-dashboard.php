@@ -15,7 +15,7 @@ $id = $_SESSION['user_id'] ?? null;
 //lid info
 $sql = "SELECT gebruiker.*, adres.* 
         FROM gebruiker 
-        JOIN adres ON gebruiker.gebruikerid = adres.adresid 
+        JOIN adres ON gebruiker.gebruikerid = adres.gebruikerid 
         WHERE gebruiker.gebruikerid = '$id'";
 $result = mysqli_query($conn, $sql);
 $lid_info = mysqli_fetch_assoc($result);

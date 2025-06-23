@@ -70,8 +70,8 @@ if (!empty($_GET['search-workout'])) {
             </div>
             <details class="compact-collapsible">
                 <summary>Maak een workout</summary>
-                <div>
-                    <form action="workout_toevoegen.php" method="post" enctype="multipart/form-data" class="register-form">
+                <div class="aanmaak-workout">
+                    <form action="workout_toevoegen.php" method="post"  class="register-form">
                         <label for="titel">Titel:</label>
                         <input type="text" name="titel" id="titel" required>
 
