@@ -29,7 +29,7 @@
                 <input type="text" name="stad" placeholder="Stad" required>
                 <input type="text" name="land" placeholder="Land" required>
                 <input type="text" name="telefoonnummer" placeholder="Telefoonnummer" required>
-                <input type="text" name="mobiel" placeholder="Mobiel">
+                <input type="text" name="mobiel" placeholder="Mobiel" required>
 
                 <select name="rol">
                     <option value="bezoeker">Bezoeker</option>

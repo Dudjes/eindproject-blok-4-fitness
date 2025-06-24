@@ -2,6 +2,7 @@
 require "database.php";
 error_reporting(0); // errors naar 0 
 ini_set('display_errors', 0); // ini_set veranderd settings van php
+
 if(strlen($_POST['firstname']) > 100){
     echo "<p style='color:red;'>firstname te lang</p>";
 }
@@ -58,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
 
-        
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $straat = $_POST['straat'];
