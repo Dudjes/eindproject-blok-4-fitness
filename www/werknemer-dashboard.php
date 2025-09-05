@@ -115,6 +115,7 @@ if (!empty($_GET['search-workout'])) {
                                 <th>Toegevoegd op</th>
                                 <th>Moeilijkheidsgraad</th>
                                 <th>Meer info</th>
+                                <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,6 +132,9 @@ if (!empty($_GET['search-workout'])) {
                                     <td><?php echo $workout["moeilijkheidsgraad"]; ?></td>
                                     <td>
                                         <a class="workout-detail-button" href="workout_detail.php?workout_id=<?php echo $workout['workout_id']; ?>">Meer info</a>
+                                    </td>
+                                    <td>
+                                        <a class="workout-detail-button" href="workout_update.php?workout_id=<?php echo $workout['workout_id']; ?>">Update</a>
                                     </td>
                                 </tr>
                             <?php } ?>

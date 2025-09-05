@@ -494,18 +494,21 @@ footer {
     font-size: 1rem;
 }
 
-.register-form button {
+.update-button {
+    display: block;       /* make the button a block element */
+    margin: 20px auto 0;  /* top margin, horizontal auto centering */
+    width: fit-content;   /* shrink button to content width */
+    padding: 1rem 2rem;   /* optional styling */
     background: #0074d9;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 12px;
-    padding: 1rem 0;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
 }
 
-.register-form button:hover {
+.update-button:hover {
     background: #005fa3;
 }
 
@@ -516,7 +519,9 @@ footer {
 
 .register-row input {
     width: 100%;
+    text-align: center;
 }
+
 
 
 /* overons */
@@ -856,3 +861,5 @@ footer {
     margin-bottom: 1rem;
     font-size: 2rem;
 }
+
+
