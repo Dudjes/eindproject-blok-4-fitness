@@ -37,6 +37,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - ./.docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+      - ./.docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/conf.d/config.user.inc.php:ro
+
 volumes:
   dbdata:
