@@ -18,18 +18,18 @@ $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 $sql = "SELECT gebruiker.*, lid.*, medewerker.* 
         FROM gebruiker
-        JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
-        JOIN medewerker ON  gebruiker.gebruikerid = medewerker.gebruikerid";
+        LEFT JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
+        LEFT JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid";
 $result = mysqli_query($conn, $sql);
 $accounts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
 //searchbar
-if (!empty($_GET['search-workout'])) {
+if (!empty($_GET['search-workout']) && !empty(trim($_GET['search-workout']))) {
     $zoeken = mysqli_real_escape_string($conn, $_GET['search-workout']);
 
     //workout
-    $sql = "SELECT * FROM workout WHERE LOWER(titel) LIKE '%$zoeken%'";
+    $sql = "SELECT * FROM workout WHERE LOWER(titel) LIKE LOWER('%$zoeken%')";
     $result = mysqli_query($conn, $sql);
     $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -37,8 +37,8 @@ if (!empty($_GET['search-workout'])) {
     //account
     $sql = "SELECT gebruiker.*, lid.*, medewerker.* 
             FROM gebruiker
-            JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
-            JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid
+            LEFT JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
+            LEFT JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid
             WHERE LOWER(gebruiker.firstname) LIKE LOWER('%$zoeken%')
                OR LOWER(gebruiker.lastname) LIKE LOWER('%$zoeken%')
                OR LOWER(gebruiker.email) LIKE LOWER('%$zoeken%')";
