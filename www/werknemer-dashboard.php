@@ -13,8 +13,10 @@ if ($_SESSION['user_rol'] != 'werknemer') {
 
 
 $sql = "SELECT * FROM workout";
-$result = mysqli_query($conn, $sql);
-$workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$workouts_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 $sql = "SELECT 
             gebruiker.gebruikerid   AS gebruiker_id,
@@ -27,31 +29,35 @@ $sql = "SELECT
         FROM gebruiker
         LEFT JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
         LEFT JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid";
-$result = mysqli_query($conn, $sql);
-$accounts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$accounts_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-//searchbar
 if (!empty($_GET['search-workout']) && !empty(trim($_GET['search-workout']))) {
-    $zoeken = mysqli_real_escape_string($conn, $_GET['search-workout']);
+    $zoeken = "%" . strtolower(trim($_GET['search-workout'])) . "%";
 
-    //workout
-    $sql = "SELECT * FROM workout WHERE LOWER(titel) LIKE LOWER('%$zoeken%')";
-    $result = mysqli_query($conn, $sql);
-    $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // Workouts zoeken
+    $sql = "SELECT * FROM workout WHERE LOWER(titel) LIKE :zoekterm";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':zoekterm', $zoeken, PDO::PARAM_STR);
+    $stmt->execute();
+    $workouts_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-    //account
+    // Accounts zoeken
     $sql = "SELECT gebruiker.*, lid.*, medewerker.* 
             FROM gebruiker
             LEFT JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
             LEFT JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid
-            WHERE LOWER(gebruiker.firstname) LIKE LOWER('%$zoeken%')
-               OR LOWER(gebruiker.lastname) LIKE LOWER('%$zoeken%')
-               OR LOWER(gebruiker.email) LIKE LOWER('%$zoeken%')";
-    $result = mysqli_query($conn, $sql);
-    $accounts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            WHERE LOWER(gebruiker.firstname) LIKE :zoekterm
+               OR LOWER(gebruiker.lastname) LIKE :zoekterm
+               OR LOWER(gebruiker.email) LIKE :zoekterm";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':zoekterm', $zoeken, PDO::PARAM_STR);
+    $stmt->execute();
+    $accounts_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -161,7 +167,7 @@ if (!empty($_GET['search-workout']) && !empty(trim($_GET['search-workout']))) {
                                     <li>Username: <?php echo $account["username"]; ?></li>
                                 </ul>
                             </div>
-                            <a href="gebruiker_dash.php?id=<?php echo $account['gebruiker_id']; ?>" class="detail-button">Detail pagina</a>
+                            <a href="gebruiker_dash.php?id=<?php echo $account['gebruikerid']; ?>" class="detail-button">Detail pagina</a>
                         </div>
                     <?php } ?>
                 </div>

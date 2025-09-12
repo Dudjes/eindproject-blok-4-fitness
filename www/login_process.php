@@ -11,27 +11,33 @@ require "database.php";
 $username = $_POST['username'];
 $wachtwoord = $_POST['password'];
 
-$sql = "SELECT * FROM gebruiker WHERE username = '$username'";
-$result = mysqli_query($conn, $sql);
-$user = mysqli_fetch_assoc($result);
+$sql = "SELECT * FROM gebruiker WHERE username = :username LIMIT 1";
+$stmt = $conn->prepare($sql);
+$stmt->execute(["username" => $username]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 if ($user && $wachtwoord === $user['password']) {
-    $_SESSION['user_id'] = $user['gebruikerid'];
-    $_SESSION['user_email'] = $user['email'];
-    $_SESSION['user_username'] = $user['username'];
-    $_SESSION['user_rol'] = $user['rol'];
+    $_SESSION['user_id'] =        $user['gebruikerid'];
+    $_SESSION['user_email'] =     $user['email'];
+    $_SESSION['user_username'] =  $user['username'];
+    $_SESSION['user_rol']=        $user['rol'];
 
-    if ($user['rol'] == 'bezoeker') {
-        header('Location: index.php');
-        exit;
-    } elseif ($user['rol'] == 'lid') {
-        header('Location: lid-dashboard.php?id=' . $user['gebruikerid']);
-        exit;
-    } elseif ($user['rol'] == 'werknemer') {
-        header('Location: werknemer-dashboard.php');
-        exit;
+    switch ($user['rol']) {
+        case 'bezoeker':
+            header('Location: index.php');
+            break;
+        case 'lid':
+            header('Location: lid-dashboard.php?id=' . $user['gebruikerid']);
+            break;
+        case 'werknemer':
+            header('Location: werknemer-dashboard.php');
+            break;
+        default:
+            header('Location: index.php');
     }
+    exit;
+
 }
 
 // fallback if login fails

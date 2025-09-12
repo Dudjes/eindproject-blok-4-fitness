@@ -18,8 +18,10 @@ $sql = "SELECT gebruiker.*, adres.*
         FROM gebruiker
         LEFT JOIN adres ON gebruiker.gebruikerid = adres.gebruikerid
         WHERE gebruiker.gebruikerid = $id";
-$result = mysqli_query($conn, $sql);
-$gebruiker_info = mysqli_fetch_assoc($result);
+
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$gebruiker_info = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 ?>
