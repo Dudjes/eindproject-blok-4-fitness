@@ -16,7 +16,7 @@ $id = $_GET['id'];
 //gebruiker info
 $sql = "SELECT gebruiker.*, adres.*
         FROM gebruiker
-        JOIN adres ON gebruiker.gebruikerid = adres.gebruikerid
+        LEFT JOIN adres ON gebruiker.gebruikerid = adres.gebruikerid
         WHERE gebruiker.gebruikerid = $id";
 $result = mysqli_query($conn, $sql);
 $gebruiker_info = mysqli_fetch_assoc($result);

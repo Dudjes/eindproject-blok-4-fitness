@@ -16,7 +16,14 @@ $sql = "SELECT * FROM workout";
 $result = mysqli_query($conn, $sql);
 $workouts_info = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-$sql = "SELECT gebruiker.*, lid.*, medewerker.* 
+$sql = "SELECT 
+            gebruiker.gebruikerid   AS gebruiker_id,
+            gebruiker.firstname,
+            gebruiker.lastname,
+            gebruiker.email,
+            gebruiker.username,
+            lid.lidid               AS lid_id,
+            medewerker.medewerkerid AS medewerker_id
         FROM gebruiker
         LEFT JOIN lid ON gebruiker.gebruikerid = lid.gebruikerid
         LEFT JOIN medewerker ON gebruiker.gebruikerid = medewerker.gebruikerid";
@@ -62,7 +69,7 @@ if (!empty($_GET['search-workout']) && !empty(trim($_GET['search-workout']))) {
     <main class="main-workouts">
         <div class="search ">
             <form method="get">
-                <input type="search" name="search-workout" id="search">
+                <input type="search" name="search-workout" id="search" placeholder="minimaal 2 letters">
                 <button type="submit">Search</button>
             </form>
             <div class="logout">
@@ -154,7 +161,7 @@ if (!empty($_GET['search-workout']) && !empty(trim($_GET['search-workout']))) {
                                     <li>Username: <?php echo $account["username"]; ?></li>
                                 </ul>
                             </div>
-                            <a href="gebruiker_dash.php?id=<?php echo $account['gebruikerid']; ?>" class="detail-button">Detail pagina</a>
+                            <a href="gebruiker_dash.php?id=<?php echo $account['gebruiker_id']; ?>" class="detail-button">Detail pagina</a>
                         </div>
                     <?php } ?>
                 </div>
